@@ -1,3 +1,18 @@
+-- composer.json
+
+{
+    "require": {
+        "unno/yandex-maps-bundle": "dev-master"
+    }
+}
+
+-- app/AppKernel.php
+
+$bundles = array(
+    new Unno\YandexMapsBundle\UnnoYandexMapsBundle(),
+);
+
+
 -- app/config/config.yml
 
 unno_yandex_maps:

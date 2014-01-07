@@ -1,0 +1,78 @@
+{% block unno_yandex_maps_widget %}
+    {% spaceless %}
+        {{ block('form_widget') }}
+
+        {% block unno_yandex_maps_html %}
+            <div id="{{ id }}_canvas"></div>
+
+            <script src="http://api-maps.yandex.ru/2.0-stable/?load=package.standard&lang=ru-RU" type="text/javascript"></script>
+            <script type="text/javascript">
+                ymaps.ready(function () {
+                    var canvas = document.getElementById('{{ id }}_canvas'),
+                        center = [
+                            {{ form.vars.value and form.vars.value.longitude ? form.vars.value.longitude : longitude }},
+                            {{ form.vars.value and form.vars.value.latitude ? form.vars.value.latitude : latitude }}
+                        ],
+                        zoom = {{ canvasZoom }},
+                        map, placemark;
+
+                    canvas.style.width = '{{ canvasWidth }}';
+                    canvas.style.height = '{{ canvasHeight }}';
+
+                    map = new ymaps.Map(canvas, {
+                        center: center,
+                        zoom: zoom
+                    });
+
+                    {% if hasControlsZoomSmall %}
+                        map.controls.add('smallZoomControl');
+                    {% endif %}
+
+                    {% if hasControlsZoom %}
+                        map.controls.add('zoomControl');
+                    {% endif %}
+
+                    {% if hasControlsTypeSelector %}
+                        map.controls.add('typeSelector');
+                    {% endif %}
+
+                    {% if hasControlsScaleLine %}
+                        map.controls.add('scaleLine');
+                    {% endif %}
+
+                    {% if hasControlsMiniMap %}
+                        map.controls.add('miniMap');
+                    {% endif %}
+
+                    {% if placemark %}
+                        {% if placemarkDraggable %}
+                            placemark = new ymaps.Placemark(center, {}, {
+                                draggable: true,
+                                preset: 'twirl#houseIcon'
+                            });
+                            placemark.events.add('dragend', function (e) {
+                                var placemark = e.originalEvent.target;
+                                var placemarkCoordinates = placemark.geometry.getCoordinates();
+
+                                document.getElementById('{{ id }}_latitude').value = placemarkCoordinates[1];
+                                document.getElementById('{{ id }}_longitude').value = placemarkCoordinates[0];
+
+                                placemark.getMap().setCenter(placemarkCoordinates);
+                            });
+                        {% else %}
+                            placemark = new ymaps.Placemark(center, {}, {
+                                preset: 'twirl#houseIcon'
+                            });
+                        {% endif %}
+
+                        {% if placemarkGeocoderFunction %}
+                            {{ placemarkGeocoderFunction }}.call(this, map, placemark);
+                        {% endif %}
+
+                        map.geoObjects.add(placemark);
+                    {% endif %}
+                });
+            </script>
+        {% endblock %}
+    {% endspaceless %}
+{% endblock %}

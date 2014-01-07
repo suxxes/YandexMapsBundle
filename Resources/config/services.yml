@@ -1,0 +1,6 @@
+services:
+    unno_yandex_maps_type:
+        class: Unno\YandexMapsBundle\Form\YandexMapsType
+        arguments: ["@service_container"]
+        tags:
+            - { name: form.type, alias: "unno_yandex_maps" }

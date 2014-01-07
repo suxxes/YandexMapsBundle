@@ -1,0 +1,25 @@
+{
+    "name": "unno/yandex-maps-bundle",
+    "description": "Symfony2 Yandex Maps bundle",
+    "license": "MIT",
+    "type": "symfony-bundle",
+    "authors": [
+        {
+            "name":   "Fedor",
+            "email":  "unno@unno.ru"
+        }
+    ],
+    "require": {
+        "symfony/framework-bundle": ">=2.1,<3.0-dev",
+    },
+    "minimum-stability": "dev",
+    "autoload": {
+        "psr-0": { "Unno\\YandexMapsBundle": "" }
+    },
+    "target-dir": "Unno/YandexMapsBundle",
+    "extra": {
+        "branch-alias": {
+            "dev-master": "0.1.x-dev"
+        }
+    }
+}

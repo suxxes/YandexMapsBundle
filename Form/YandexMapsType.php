@@ -55,6 +55,8 @@ class YandexMapsType extends AbstractType
         $view->vars['hasControlsTypeSelector'] = $options['hasControlsTypeSelector'];
         $view->vars['hasControlsMiniMap']      = $options['hasControlsMiniMap'];
         $view->vars['hasControlsScaleLine']    = $options['hasControlsScaleLine'];
+
+        $view->vars['behaviors'] = $options['behaviors'];
     }
     
     /**
@@ -73,6 +75,8 @@ class YandexMapsType extends AbstractType
             'placemark'                 => $this->container->hasParameter('unno_yandex_maps.placemark') ? $this->container->getParameter('unno_yandex_maps.placemark') : false,
             'placemarkDraggable'        => $this->container->hasParameter('unno_yandex_maps.placemark.draggable') ? $this->container->getParameter('unno_yandex_maps.placemark.draggable') : false,
             'placemarkGeocoderFunction' => $this->container->hasParameter('unno_yandex_maps.placemark.geocoderFunction') ? $this->container->getParameter('unno_yandex_maps.placemark.geocoderFunction') : false,
+
+            'behaviors'                 => $this->container->hasParameter('unno_yandex_maps.behaviors') ? $this->container->getParameter('unno_yandex_maps.behaviors') : array(),
 
             'hasControlsZoom'           => $this->container->hasParameter('unno_yandex_maps.controls.zoom') ? $this->container->getParameter('unno_yandex_maps.controls.zoom') : false,
             'hasControlsZoomSmall'      => $this->container->hasParameter('unno_yandex_maps.controls.zoomSmall') ? $this->container->getParameter('unno_yandex_maps.controls.zoomSmall') : false,

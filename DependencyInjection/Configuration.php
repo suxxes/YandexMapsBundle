@@ -45,6 +45,9 @@ class Configuration implements ConfigurationInterface
                         ->booleanNode('typeSelector')->defaultValue(false)->end()
                     ->end()
                 ->end()
+                ->arrayNode('behaviors')
+                    ->prototype('scalar')
+                ->end()
             ->end();
 
         return $treeBuilder;

@@ -39,6 +39,7 @@ class YandexMapsType extends AbstractType
 
     public function buildView(FormView $view, FormInterface $form, array $options)
     {
+        $view->vars['package']   = $options['package'];
         $view->vars['latitude']  = $options['latitude'];
         $view->vars['longitude'] = $options['longitude'];
 
@@ -63,6 +64,7 @@ class YandexMapsType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
+            'package'                   => $this->container->hasParameter('unno_yandex_maps.package') ? $this->container->getParameter('unno_yandex_maps.package') : '',
             'latitude'                  => $this->container->hasParameter('unno_yandex_maps.latitude') ? $this->container->getParameter('unno_yandex_maps.latitude') : '',
             'longitude'                 => $this->container->hasParameter('unno_yandex_maps.longitude') ? $this->container->getParameter('unno_yandex_maps.longitude') : '',
 

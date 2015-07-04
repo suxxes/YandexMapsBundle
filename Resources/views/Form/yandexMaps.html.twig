@@ -5,7 +5,7 @@
         {% block unno_yandex_maps_html %}
             <div id="{{ id }}_canvas"></div>
 
-            <script src="http://api-maps.yandex.ru/2.0-stable/?coordorder=longlat&load={{ package }},behavior.Drag,behaviors.ScrollZoom&lang=ru-RU" type="text/javascript"></script>
+            <script src="http://api-maps.yandex.ru/2.0-stable/?coordorder=longlat&load={{ package }}&lang=ru-RU" type="text/javascript"></script>
             <script type="text/javascript">
                 ymaps.ready(function () {
                     var canvas = document.getElementById('{{ id }}_canvas'),
@@ -21,7 +21,7 @@
 
                     map = new ymaps.Map(canvas, {
                         center: center,
-                        behaviors: ['drag', 'scrollZoom'],
+                        behaviors: {{ behaviors|json_encode()|raw }},
                         zoom: zoom
                     });
 

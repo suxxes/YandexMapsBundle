@@ -39,6 +39,8 @@ class UnnoYandexMapsExtension extends Extension
         $container->setParameter('unno_yandex_maps.controls.scaleLine', $config['controls']['scaleLine']);
         $container->setParameter('unno_yandex_maps.controls.miniMap', $config['controls']['miniMap']);
         $container->setParameter('unno_yandex_maps.controls.typeSelector', $config['controls']['typeSelector']);
+
+        $container->setParameter('unno_yandex_maps.behaviors', $config['behaviors']);
     }
 
     public function getAlias()

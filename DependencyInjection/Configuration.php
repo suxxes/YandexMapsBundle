@@ -26,8 +26,8 @@ class Configuration implements ConfigurationInterface
         $rootNode
             ->children()
                 ->scalarNode('package')->defaultValue('package.standard')->end()
-                ->floatNode('latitude')->defaultValue(37.619899)->end()
-                ->floatNode('longitude')->defaultValue(55.753676)->end()
+                ->floatNode('latitude')->defaultValue(55.753676)->end()
+                ->floatNode('longitude')->defaultValue(37.619899)->end()
                 ->integerNode('canvasZoom')->defaultValue(10)->end()
                 ->arrayNode('placemark')
                     ->canBeEnabled()

@@ -21,6 +21,7 @@
 
                     map = new ymaps.Map(canvas, {
                         center: center,
+                        behaviors: {{ behaviors|json_encode()|raw }},
                         zoom: zoom
                     });
 

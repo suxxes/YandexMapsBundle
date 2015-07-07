@@ -25,6 +25,7 @@ class Configuration implements ConfigurationInterface
         // more information on that topic.
         $rootNode
             ->children()
+                ->scalarNode('package')->defaultValue('package.standard')->end()
                 ->floatNode('latitude')->defaultValue(55.753676)->end()
                 ->floatNode('longitude')->defaultValue(37.619899)->end()
                 ->integerNode('canvasZoom')->defaultValue(10)->end()
@@ -44,6 +45,9 @@ class Configuration implements ConfigurationInterface
                         ->booleanNode('miniMap')->defaultValue(false)->end()
                         ->booleanNode('typeSelector')->defaultValue(false)->end()
                     ->end()
+                ->end()
+                ->arrayNode('behaviors')
+                    ->prototype('scalar')
                 ->end()
             ->end();
 

@@ -25,6 +25,7 @@ class UnnoYandexMapsExtension extends Extension
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.yml');
 
+        $container->setParameter('unno_yandex_maps.package', $config['package']);
         $container->setParameter('unno_yandex_maps.latitude', $config['latitude']);
         $container->setParameter('unno_yandex_maps.longitude', $config['longitude']);
         $container->setParameter('unno_yandex_maps.canvasZoom', $config['canvasZoom']);
@@ -38,6 +39,8 @@ class UnnoYandexMapsExtension extends Extension
         $container->setParameter('unno_yandex_maps.controls.scaleLine', $config['controls']['scaleLine']);
         $container->setParameter('unno_yandex_maps.controls.miniMap', $config['controls']['miniMap']);
         $container->setParameter('unno_yandex_maps.controls.typeSelector', $config['controls']['typeSelector']);
+
+        $container->setParameter('unno_yandex_maps.behaviors', $config['behaviors']);
     }
 
     public function getAlias()
